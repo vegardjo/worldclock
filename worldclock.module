@@ -1,13 +1,104 @@
 <?php
 
-/* hook_block */ 
+drupal_add_css(drupal_get_path('module', 'worldclock') . '/css/worldclock.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));
+
+/* hook_block_info */ 
 function worldclock_block_info() {
-  // This example comes from node.module.
   $blocks['clock'] = array(
     'info' => t('Worldclock'), 
     'cache' => DRUPAL_NO_CACHE,
   );
-  
   return $blocks;
 }
 
+/* hook_block_view */
+function worldclock_block_view($delta = '') {
+  // todo: add theme function and .tpl file
+  $block = array();
+  
+  $timeformat = "H:i";
+  $dateformat = "D d.m.Y";
+  $svalbard = new DateTime("now", new DateTimeZone('Arctic/Longyearbyen'));
+  $troll = new DateTime("now", new DateTimeZone('Antarctica/Casey'));
+  $tromso = new DateTime("now", new DateTimeZone('Europe/Warsaw'));
+  $dubai = new DateTime("now", new DateTimeZone('Asia/Dubai'));
+  $singapore = new DateTime("now", new DateTimeZone('Asia/Singapore'));
+  
+  $block['subject'] = t('Worldclock');
+  $block['content'] = '
+    <table class="worldclock">
+      <tr>
+        <td>
+          <span class="place">
+            Svalbard
+          </span>
+
+          <span class="time">
+          ' . $svalbard->format($timeformat) . '
+          </span>
+
+          <span class="date">
+          ' . $svalbard->format($dateformat) . '
+          </span>
+        </td>
+
+        <td>
+          <span class="place">
+            Tromsø
+          </span>
+
+          <span class="time">
+          ' . $tromso->format($timeformat) . '
+          </span>
+
+          <span class="date">
+          ' . $tromso->format($dateformat) . '
+          </span>      
+        </td>
+
+        <td>
+          <span class="place">
+            Troll (Casey)
+          </span>
+
+          <span class="time">
+          ' . $troll->format($timeformat) . '
+          </span>
+
+          <span class="date">
+          ' . $troll->format($dateformat) . '
+          </span>      
+        </td>
+        
+        <td>
+          <span class="place">
+            Singapore
+          </span>
+
+          <span class="time">
+          ' . $singapore->format($timeformat) . '
+          </span>
+
+          <span class="date">
+          ' . $singapore->format($dateformat) . '
+          </span>
+        </td>
+
+        <td>
+          <span class="place">
+            Dubai
+          </span>
+
+          <span class="time">
+          ' . $dubai->format($timeformat) . '
+          </span>
+
+          <span class="date">
+          ' . $dubai->format($dateformat) . '
+          </span>
+        </td>
+      </tr>
+    </table>';
+  
+  return $block;
+}

@@ -1,0 +1,38 @@
+table.worldclock {
+  font-family: helvetica;
+}
+
+table.worldclock td {
+  padding: 0 5px;
+}
+
+
+table.worldclock span {
+  display: block;
+  color: gray;
+  text-align: center;
+}
+
+table.worldclock span.place {
+  text-transform: uppercase;
+  clear: both;
+}
+
+table.worldclock span.time {
+  font-size: 150%;
+  padding: 5px;
+  background: #eee;
+  color: black;
+  clear: both;
+  border-top: solid 2px gray;
+  border-left: solid 2px gray;
+  border-bottom: solid 1px gray;
+  border-right: solid 1px gray; 
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+table.worldclock span.date {
+  font-size: 80%;
+}
