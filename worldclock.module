@@ -1,0 +1,13 @@
+<?php
+
+/* hook_block */ 
+function worldclock_block_info() {
+  // This example comes from node.module.
+  $blocks['clock'] = array(
+    'info' => t('Worldclock'), 
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  
+  return $blocks;
+}
+

@@ -1,0 +1,3 @@
+name = World Clock Block
+description = "Adds a block with the time of Ksats locations"
+core = 7.x
